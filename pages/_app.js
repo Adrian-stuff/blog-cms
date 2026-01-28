@@ -11,26 +11,39 @@ import { LocaleProvider } from '@/lib/locale'
 import { prepareDayjs } from '@/lib/dayjs'
 import { ThemeProvider } from '@/lib/theme'
 import Scripts from '@/components/Scripts'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
 export default function MyApp ({ Component, pageProps, config, locale }) {
+  const router = useRouter()
+
   return (
     <ConfigProvider value={config}>
       <Scripts />
       <LocaleProvider value={locale}>
         <ThemeProvider>
-          <>
-            {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ackee' && (
-              <Ackee
-                ackeeServerUrl={config.analytics.ackeeConfig.dataAckeeServer}
-                ackeeDomainId={config.analytics.ackeeConfig.domainId}
-              />
-            )}
-            {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ga' && <Gtag />}
-            <Component {...pageProps} />
-          </>
+          <AnimatePresence mode='wait'>
+            <motion.div
+              key={router.asPath}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="min-h-screen"
+            >
+              {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ackee' && (
+                <Ackee
+                  ackeeServerUrl={config.analytics.ackeeConfig.dataAckeeServer}
+                  ackeeDomainId={config.analytics.ackeeConfig.domainId}
+                />
+              )}
+              {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ga' && <Gtag />}
+              <Component {...pageProps} />
+            </motion.div>
+          </AnimatePresence>
         </ThemeProvider>
       </LocaleProvider>
     </ConfigProvider>
