@@ -4,7 +4,7 @@ import Container from '@/components/Container'
 import Tags from '@/components/Tags'
 import PropTypes from 'prop-types'
 
-const SearchLayout = ({ tags, posts, currentTag }) => {
+const SearchLayout = ({ tags, posts, currentTag, navItems }) => {
   const [searchValue, setSearchValue] = useState('')
   let filteredBlogPosts = []
   if (posts) {
@@ -16,7 +16,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
   }
 
   return (
-    <Container>
+    <Container navItems={navItems}>
       <div className="relative">
         <input
           type="text"

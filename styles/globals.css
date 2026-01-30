@@ -55,6 +55,13 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
 }
 
+.glass-panel {
+  @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white border-opacity-20 shadow-lg;
+}
+.dark .glass-panel {
+  @apply bg-black bg-opacity-40 border-gray-700;
+}
+
 ::selection {
   background: rgba(45, 170, 219, 0.3);
 }
@@ -162,4 +169,10 @@ nav {
 
 .capture-pointer-events * {
   @apply pointer-events-none;
+}
+
+.bg-cross-pattern {
+  background-color: #000000;
+  background-image: radial-gradient(#333333 1px, transparent 1px);
+  background-size: 30px 30px;
 }

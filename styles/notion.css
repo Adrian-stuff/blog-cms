@@ -53,6 +53,8 @@
 .notion {
   @apply text-gray-600 dark:text-gray-300;
   overflow-wrap: break-word;
+  font-size: 1.25rem; /* Increased from default */
+  line-height: 1.8;
 }
 .notion,
 .notion-text,

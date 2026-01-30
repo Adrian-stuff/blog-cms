@@ -10,7 +10,7 @@ import Container from '@/components/Container'
 import Post from '@/components/Post'
 import Comments from '@/components/Comments'
 
-export default function BlogPost ({ post, blockMap, emailHash }) {
+export default function BlogPost ({ post, blockMap, emailHash, navItems }) {
   const router = useRouter()
   const BLOG = useConfig()
   const locale = useLocale()
@@ -29,6 +29,7 @@ export default function BlogPost ({ post, blockMap, emailHash }) {
       // date={new Date(post.publishedAt).toISOString()}
       type="article"
       fullWidth={fullWidth}
+      navItems={navItems}
     >
       <Post
         post={post}
@@ -81,6 +82,7 @@ export async function getStaticPaths () {
 export async function getStaticProps ({ params: { slug } }) {
   const posts = await getAllPosts({ includePages: true })
   const post = posts.find(t => t.slug === slug)
+  const navItems = posts.filter(post => post.type?.[0] === 'Page')
 
   if (!post) return { notFound: true }
 
@@ -92,7 +94,7 @@ export async function getStaticProps ({ params: { slug } }) {
     .toLowerCase()
 
   return {
-    props: { post, blockMap, emailHash },
+    props: { post, blockMap, emailHash, navItems },
     revalidate: 1
   }
 }

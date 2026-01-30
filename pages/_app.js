@@ -12,6 +12,8 @@ import { prepareDayjs } from '@/lib/dayjs'
 import { ThemeProvider } from '@/lib/theme'
 import Scripts from '@/components/Scripts'
 import { AnimatePresence, motion } from 'framer-motion'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import { useRouter } from 'next/router'
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
@@ -32,7 +34,7 @@ export default function MyApp ({ Component, pageProps, config, locale }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="min-h-screen"
+              className={`min-h-screen ${GeistSans.variable} ${GeistMono.variable} font-sans`}
             >
               {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ackee' && (
                 <Ackee

@@ -10,6 +10,7 @@
         "dayjs": "^1.11.10",
         "feed": "^4.2.2",
         "framer-motion": "^12.29.2",
+        "geist": "^1.5.1",
         "gitalk": "^1.8.0",
         "mermaid": "^10.6.1",
         "next": "^14.0.2",
@@ -20,6 +21,7 @@
         "react": "^18.2.0",
         "react-cusdis": "^2.1.3",
         "react-dom": "^18.2.0",
+        "react-icons": "^5.5.0",
         "react-notion-x": "^6.16.0",
         "react-tweet-embed": "^2.0.0",
         "react-use": "^17.4.0",
@@ -528,6 +530,8 @@
 
     "functions-have-names": ["functions-have-names@1.2.3", "", {}, ""],
 
+    "geist": ["geist@1.5.1", "", { "peerDependencies": { "next": ">=13.2.0" } }, "sha512-mAHZxIsL2o3ZITFaBVFBnwyDOw+zNLYum6A6nIjpzCGIO8QtC3V76XF2RnZTyLx1wlDTmMDy8jg3Ib52MIjGvQ=="],
+
     "generator-function": ["generator-function@2.0.1", "", {}, ""],
 
     "get-intrinsic": ["get-intrinsic@1.3.0", "", { "dependencies": { "call-bind-apply-helpers": "^1.0.2", "es-define-property": "^1.0.1", "es-errors": "^1.3.0", "es-object-atoms": "^1.1.1", "function-bind": "^1.1.2", "get-proto": "^1.0.1", "gopd": "^1.2.0", "has-symbols": "^1.1.0", "hasown": "^2.0.2", "math-intrinsics": "^1.1.0" } }, ""],
@@ -963,6 +967,8 @@
     "react-flip-move": ["react-flip-move@2.9.14", "", { "peerDependencies": { "react": "0.13.x || 0.14.x || 15.x.x", "react-dom": "0.13.x || 0.14.x || 15.x.x" } }, ""],
 
     "react-hotkeys-hook": ["react-hotkeys-hook@3.4.7", "", { "dependencies": { "hotkeys-js": "3.9.4" }, "peerDependencies": { "react": ">=16.8.1", "react-dom": ">=16.8.1" } }, ""],
+
+    "react-icons": ["react-icons@5.5.0", "", { "peerDependencies": { "react": "*" } }, "sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw=="],
 
     "react-image": ["react-image@4.1.0", "", { "peerDependencies": { "@babel/runtime": ">=7", "react": ">=16.8", "react-dom": ">=16.8" } }, ""],
 

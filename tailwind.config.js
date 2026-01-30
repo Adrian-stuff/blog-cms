@@ -13,10 +13,17 @@ export default {
         },
         night: {
           DEFAULT: config.darkBackground || '#111827'
+        },
+        brand: {
+          dark: '#050510',
+          primary: '#3B82F6', // Electric Blue
+          secondary: '#8B5CF6', // Violet
+          accent: '#06b6d4' // Cyan
         }
       },
       fontFamily: {
-        sans: FONTS_SANS,
+        sans: ['var(--font-geist-sans)', ...FONTS_SANS],
+        mono: ['var(--font-geist-mono)', ...FONTS_SANS], // Using sans fallback for mono if needed, or specific mono stack
         serif: FONTS_SERIF,
         noEmoji: [
           '"IBM Plex Sans"',

@@ -4,12 +4,27 @@ import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
 import Pagination from '@/components/Pagination'
 import { getAllPosts } from '@/lib/notion'
+import { motion } from 'framer-motion'
 
-const Page = ({ postsToShow, page, showNext }) => {
+const Page = ({ postsToShow, page, showNext, navItems }) => {
   return (
-    <Container>
-      {postsToShow &&
-        postsToShow.map(post => <BlogPost key={post.id} post={post} />)}
+    <Container navItems={navItems}>
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.1
+            }
+          }
+        }}
+      >
+        {postsToShow &&
+          postsToShow.map(post => <BlogPost key={post.id} post={post} />)}
+      </motion.div>
       <Pagination page={page} showNext={showNext} />
     </Container>
   )
@@ -17,7 +32,10 @@ const Page = ({ postsToShow, page, showNext }) => {
 
 export async function getStaticProps (context) {
   const { page } = context.params // Get Current Page No.
-  const posts = await getAllPosts({ includePages: false })
+  const allPosts = await getAllPosts({ includePages: true })
+  const posts = allPosts.filter(post => post.type?.[0] === 'Post')
+  const navItems = allPosts.filter(post => post.type?.[0] === 'Page')
+  
   const postsToShow = posts.slice(
     config.postsPerPage * (page - 1),
     config.postsPerPage * page
@@ -28,7 +46,8 @@ export async function getStaticProps (context) {
     props: {
       page, // Current Page
       postsToShow,
-      showNext
+      showNext,
+      navItems
     },
     revalidate: 1
   }

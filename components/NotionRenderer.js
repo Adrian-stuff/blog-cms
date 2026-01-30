@@ -5,6 +5,7 @@ import { getTextContent } from 'notion-utils'
 import { FONTS_SANS, FONTS_SERIF } from '@/consts'
 import { useConfig } from '@/lib/config'
 import Toggle from '@/components/notion-blocks/Toggle'
+import MotionText from '@/components/notion-blocks/MotionText'
 
 // Lazy-load some heavy components & override the renderers of some block types
 const components = {
@@ -93,7 +94,8 @@ const components = {
 
   toggle_nobelium: ({ block, children }) => (
     <Toggle block={block}>{children}</Toggle>
-  )
+  ),
+  text: MotionText
 }
 
 const mapPageUrl = id => `https://www.notion.so/${id.replace(/-/g, '')}`

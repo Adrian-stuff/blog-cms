@@ -7,6 +7,7 @@ import FormattedDate from '@/components/FormattedDate'
 import TagItem from '@/components/TagItem'
 import NotionRenderer from '@/components/NotionRenderer'
 import TableOfContents from '@/components/TableOfContents'
+import { motion } from 'framer-motion'
 
 /**
  * A post renderer
@@ -25,18 +26,35 @@ export default function Post (props) {
   const { dark } = useTheme()
 
   return (
-    <article className={cn('flex flex-col', fullWidth ? 'md:px-24' : 'items-center')}>
-      <h1 className={cn(
-        'w-full font-bold text-3xl text-black dark:text-white',
-        { 'max-w-2xl px-4': !fullWidth }
-      )}>
-        {post.title}
-      </h1>
+    <motion.article
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className={cn('flex flex-col', fullWidth ? 'md:px-24' : 'items-center')}
+    >
+      <div className="overflow-hidden w-full">
+        <motion.h1
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} 
+          className={cn(
+            'w-full font-black text-4xl md:text-6xl text-black dark:text-white leading-tight tracking-tight mb-4',
+            { 'max-w-2xl px-4': !fullWidth }
+          )}
+        >
+          {post.title}
+        </motion.h1>
+      </div>
       {post.type[0] !== 'Page' && (
-        <nav className={cn(
-          'w-full flex mt-7 items-start text-gray-500 dark:text-gray-400',
-          { 'max-w-2xl px-4': !fullWidth }
-        )}>
+        <motion.nav
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className={cn(
+            'w-full flex mt-4 items-start text-gray-500 dark:text-gray-400',
+            { 'max-w-2xl px-4': !fullWidth }
+          )}
+        >
           <div className="flex mb-4">
             <a href={BLOG.socialLink || '#'} className="flex">
               <Image
@@ -60,9 +78,14 @@ export default function Post (props) {
               ))}
             </div>
           )}
-        </nav>
+        </motion.nav>
       )}
-      <div className="self-stretch -mt-4 flex flex-col items-center lg:flex-row lg:items-stretch">
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className="self-stretch -mt-4 flex flex-col items-center lg:flex-row lg:items-stretch"
+      >
         {!fullWidth && <div className="flex-1 hidden lg:block" />}
         <div className={fullWidth ? 'flex-1 pr-4' : 'flex-none w-full max-w-2xl px-4'}>
           <NotionRenderer recordMap={blockMap} fullPage={false} darkMode={dark} />
@@ -72,8 +95,8 @@ export default function Post (props) {
           {/* TODO: Remove the magic number */}
           <TableOfContents blockMap={blockMap} className="pt-3 sticky" style={{ top: '65px' }} />
         </div>
-      </div>
-    </article>
+      </motion.div>
+    </motion.article>
   )
 }
 
