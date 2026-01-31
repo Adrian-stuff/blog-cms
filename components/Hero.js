@@ -24,15 +24,15 @@ const Hero = () => {
           Legal, Ethical & Societal Issues
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-1.1"
-        >
-          Media & Information <br /> 
-          <span className="text-green-500">Literacy</span>
-        </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-1.1"
+          >
+            Navigating Media with <br /> 
+            <span className="text-green-500">Responsibility</span>
+          </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}

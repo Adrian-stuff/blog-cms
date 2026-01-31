@@ -1,7 +1,5 @@
-
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import LandingNavbar from '@/components/LandingNavbar'
+import LandingFooter from '@/components/LandingFooter'
 import { useConfig } from '@/lib/config'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
@@ -46,13 +44,13 @@ const LandingContainer = ({ children, navItems, ...customMeta }) => {
       </Head>
       <div
         className={`wrapper ${BLOG.font === 'serif' ? 'font-serif' : 'font-sans'
-          } bg-brand-dark min-h-screen text-gray-100 selection:bg-brand-primary selection:text-white`}
+          } bg-brand-dark min-h-screen text-gray-100 selection:bg-brand-primary selection:text-white flex flex-col`}
       >
         <LandingNavbar navItems={navItems} />
         <main className="flex-grow w-full">
           {children}
         </main>
-        <Footer fullWidth={true} className="text-gray-400 border-gray-800" />
+        <LandingFooter navItems={navItems} />
       </div>
     </div>
   )

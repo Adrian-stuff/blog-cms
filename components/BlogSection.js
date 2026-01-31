@@ -35,9 +35,18 @@ const BlogSection = ({ posts }) => {
                {/* Background Gradient Effect */}
                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:translate-x-full duration-1000 -translate-x-full transition-transform z-0 pointer-events-none" />
 
-              {/* Image Placeholder */}
+              {/* Image Placeholder or Thumbnail */}
               <div className="h-52 bg-gray-100 relative overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-50 group-hover:scale-105 transition-transform duration-700" />
+                 {(post.thumbnail || post.Thumbnail) ? (
+                    <img 
+                      src={post.thumbnail || post.Thumbnail} 
+                      alt={post.title} 
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                 ) : (
+                    <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-50 group-hover:scale-105 transition-transform duration-700" />
+                 )}
+                 
                  {post.tags && post.tags.length > 0 && (
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-gray-800 shadow-sm z-10">
                         {post.tags[0]}

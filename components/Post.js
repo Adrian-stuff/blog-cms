@@ -38,7 +38,7 @@ export default function Post (props) {
           animate={{ y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} 
           className={cn(
-            'w-full font-black text-4xl md:text-6xl text-black dark:text-white leading-tight tracking-tight mb-4',
+            'w-full font-black text-4xl md:text-6xl text-black dark:text-white leading-tight tracking-tight mb-4 mx-auto',
             { 'max-w-2xl px-4': !fullWidth }
           )}
         >

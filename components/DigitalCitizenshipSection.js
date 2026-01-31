@@ -50,6 +50,11 @@ const DigitalCitizenshipSection = () => {
         setAssessmentAnswers(prev => ({ ...prev, [q]: val }))
     }
 
+    // Calculate score for display
+    const totalQuestions = 5
+    const yesAnswers = Object.values(assessmentAnswers).filter(a => a === 'yes').length
+    const currentScore = Math.round((yesAnswers / totalQuestions) * 100)
+
   return (
     <section className="py-24 px-6 md:px-12 w-full max-w-7xl mx-auto bg-gray-50">
         <div className="text-center mb-16">
@@ -89,12 +94,14 @@ const DigitalCitizenshipSection = () => {
         </div>
 
         {/* Self Assessment Box */}
-        <div className="bg-black text-white p-10 md:p-12 max-w-4xl mx-auto rounded-none">
-            <div className="flex items-center gap-4 mb-6">
-                <FiCheckCircle className="text-3xl" />
-                <h3 className="text-2xl font-bold">Quick Self-Assessment</h3>
+        <div className="bg-black text-white p-8 md:p-12 max-w-3xl mx-auto rounded-none shadow-2xl">
+            <div className="flex items-center gap-4 mb-2">
+                <FiCheckCircle className="text-3xl text-white" />
+                <h3 className="text-2xl font-bold text-white">Quick Self-Assessment</h3>
             </div>
-            <p className="text-gray-400 mb-8">Rate your digital citizenship practices. Be honest – this is for your own reflection.</p>
+            <p className="text-gray-400 mb-8 border-b border-gray-800 pb-6">
+                Rate your digital citizenship practices. Be honest – this is for your own reflection.
+            </p>
             
             <div className="space-y-6">
                 <AssessmentQuestion 
@@ -128,27 +135,56 @@ const DigitalCitizenshipSection = () => {
                     onChange={handleAnswer}
                 />
             </div>
+
+            {/* Score Section */}
+            <div className="mt-12 bg-gray-900/50 p-6 rounded-lg border border-gray-800">
+                <div className="flex justify-between items-end mb-4">
+                    <span className="text-lg font-bold text-white">Your Score</span>
+                    <span className="text-4xl font-black text-white">{currentScore}%</span>
+                </div>
+                
+                {/* Progress Bar */}
+                <div className="w-full h-3 bg-gray-800 rounded-full overflow-hidden mb-4">
+                    <div 
+                        className="h-full bg-white transition-all duration-200 ease-out"
+                        style={{ width: `${currentScore}%` }}
+                    />
+                </div>
+                
+                <p className="text-sm text-gray-400">
+                    {currentScore === 100 ? "Excellent! You're a model digital citizen." : 
+                     currentScore >= 80 ? "Great job! Keep up the good habits." :
+                     currentScore >= 60 ? "Good foundation, but there's room to improve." :
+                     "Room for growth. Review the principles above."}
+                </p>
+            </div>
         </div>
     </section>
   )
 }
 
 const AssessmentQuestion = ({ id, text, value, onChange }) => (
-    <div className="flex flex-col md:flex-row justify-between items-center py-4 border-b border-gray-800">
-        <span className="text-lg font-medium text-gray-200 mb-4 md:mb-0 text-center md:text-left">{text}</span>
-        <div className="flex gap-2">
+    <div className="flex flex-col sm:flex-row justify-between items-center py-4 border-b border-gray-800/50 gap-4">
+        <span className="text-base font-medium text-gray-200 text-center sm:text-left">{text}</span>
+        <div className="flex gap-2 shrink-0">
             <button 
                 onClick={() => onChange(id, 'yes')}
-                className={`px-4 py-1 text-sm font-bold border border-gray-600 transition-colors
-                    ${value === 'yes' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}
+                className={`px-6 py-2 text-sm font-bold rounded transition-all duration-200
+                    ${value === 'yes' 
+                        ? 'bg-green-500 text-black shadow-[0_0_15px_rgba(34,197,94,0.4)]' 
+                        : 'bg-gray-900 text-gray-400 hover:bg-gray-800'
+                    }
                 `}
             >
                 Yes
             </button>
             <button 
                 onClick={() => onChange(id, 'no')}
-                className={`px-4 py-1 text-sm font-bold border border-gray-600 transition-colors
-                     ${value === 'no' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}
+                className={`px-6 py-2 text-sm font-bold rounded transition-all duration-200
+                     ${value === 'no' 
+                        ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' 
+                        : 'bg-gray-900 text-gray-400 hover:bg-gray-800'
+                     }
                 `}
             >
                 No

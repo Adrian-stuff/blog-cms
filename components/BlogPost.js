@@ -20,6 +20,16 @@ const BlogPost = ({ post }) => {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:translate-x-full duration-1000 -translate-x-full transition-transform z-0 pointer-events-none" />
         
+        {(post.thumbnail || post.Thumbnail) && (
+             <div className="relative w-full h-64 overflow-hidden -mt-6 -mx-6 mb-6 rounded-t-2xl">
+                 <img 
+                    src={post.thumbnail || post.Thumbnail} 
+                    alt={post.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                 />
+             </div>
+         )}
+
         <header className="flex flex-col justify-between mb-4 z-10 relative">
           <div className="overflow-hidden">
             <motion.h2 

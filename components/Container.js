@@ -1,5 +1,5 @@
 import LandingNavbar from '@/components/LandingNavbar'
-import Footer from '@/components/Footer'
+import LandingFooter from '@/components/LandingFooter'
 import { useConfig } from '@/lib/config'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
@@ -76,7 +76,7 @@ const Container = ({ children, layout, fullWidth, navItems, ...customMeta }) => 
         )}>
           {children}
         </main>
-        <Footer fullWidth={fullWidth} />
+        <LandingFooter navItems={navItems} />
       </div>
     </div>
   )

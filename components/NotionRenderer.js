@@ -71,7 +71,7 @@ const components = {
   // Database block
   Collection: dynamic(() => {
     return import('react-notion-x/build/third-party/collection').then(module => module.Collection)
-  }),
+  }, { ssr: false }),
   // Equation block & inline variant
   Equation: dynamic(() => {
     return import('react-notion-x/build/third-party/equation').then(module => module.Equation)
@@ -95,6 +95,7 @@ const components = {
   toggle_nobelium: ({ block, children }) => (
     <Toggle block={block}>{children}</Toggle>
   ),
+  paragraph: MotionText,
   text: MotionText
 }
 
