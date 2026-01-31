@@ -55,9 +55,7 @@ const LandingNavbar = ({ navItems }) => {
           </div>
 
           <div className="hidden lg:block">
-            <button className="px-6 py-2.5 rounded-full bg-black text-white font-bold text-sm hover:bg-gray-800 transition-colors">
-              Get Started
-            </button>
+            {/* Get Started button removed as per request */}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -91,11 +89,7 @@ const LandingNavbar = ({ navItems }) => {
                   {item.title}
                 </Link>
               ))}
-              <div className="pt-6 border-t border-gray-200">
-                <button className="w-full px-6 py-4 rounded-full bg-black text-white font-bold text-lg hover:bg-gray-800 transition-colors">
-                  Get Started
-                </button>
-              </div>
+              {/* Get Started button removed from mobile menu */}
             </div>
           </motion.div>
         )}

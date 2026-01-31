@@ -50,12 +50,20 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex justify-center gap-4"
         >
-          <button className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-colors">
-            Explore Topics
-          </button>
-          <button className="px-8 py-3 border border-gray-700 text-white font-semibold rounded-full hover:bg-white/10 transition-colors">
-            View Resources
-          </button>
+          <div className="flex justify-center gap-4">
+            <a 
+              href="#overview" 
+              className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center"
+            >
+              Explore Topics
+            </a>
+            <a 
+              href="#resources" 
+              className="px-8 py-3 border border-gray-700 text-white font-semibold rounded-full hover:bg-white/10 transition-colors flex items-center justify-center"
+            >
+              View Resources
+            </a>
+          </div>
         </motion.div>
       </motion.div>
     </section>

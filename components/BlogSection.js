@@ -10,10 +10,10 @@ const BlogSection = ({ posts }) => {
     <section id="blog" className="py-24 px-6 md:px-12 w-full max-w-7xl mx-auto">
       <div className="text-center mb-16">
         <p className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-3">LATEST UPDATES</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
           Insights & Articles
         </h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Deep dives into media literacy, digital ethics, and the evolving landscape of information.
         </p>
       </div>
