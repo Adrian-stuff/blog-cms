@@ -1,5 +1,43 @@
-import { motion } from 'framer-motion'
+import { motion, useSpring, useTransform, useInView, useMotionValue } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import { FiGlobe, FiRadio, FiUsers, FiMessageSquare, FiLock, FiTrendingUp } from 'react-icons/fi'
+
+const AnimatedStat = ({ value }) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
+  // Parse the input string (e.g., "$4.9 trillion")
+  // Regex groups: 1: Prefix, 2: Number, 3: Suffix
+  const match = value.match(/^([^\d\.]*?)([\d\.]+)([^\d\.]*?)$/)
+  
+  const prefix = match ? match[1] : ""
+  const numberValue = match ? parseFloat(match[2]) : 0
+  const suffix = match ? match[3] : ""
+  
+  // Determine decimals based on input string
+  const decimals = match && match[2].includes('.') ? match[2].split('.')[1].length : 0
+
+  const motionValue = useMotionValue(0)
+  const springValue = useSpring(motionValue, { damping: 20, stiffness: 60 })
+  const displayValue = useTransform(springValue, (latest) => latest.toFixed(decimals))
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(numberValue)
+    }
+  }, [isInView, numberValue, motionValue])
+
+  // Fallback for non-matching strings (though our data matches)
+  if (!match) return <span ref={ref}>{value}</span>
+
+  return (
+    <span ref={ref} className="flex items-baseline justify-end">
+      <span>{prefix}</span>
+      <motion.span>{displayValue}</motion.span>
+      <span>{suffix}</span>
+    </span>
+  )
+}
 
 const SocietalImpactSection = () => {
     const stats = [
@@ -72,7 +110,9 @@ const SocietalImpactSection = () => {
                     <div className="flex justify-between items-start mb-6">
                         <div className="text-2xl text-gray-800">{item.icon}</div>
                         <div className="text-right">
-                            <div className="text-3xl font-bold text-gray-900 leading-none mb-1">{item.stat}</div>
+                            <div className="text-3xl font-bold text-gray-900 leading-none mb-1 flex justify-end">
+                                <AnimatedStat value={item.stat} />
+                            </div>
                             <div className="text-xs text-gray-500 uppercase tracking-wide">{item.sub}</div>
                         </div>
                     </div>
