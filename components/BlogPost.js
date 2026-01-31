@@ -21,7 +21,7 @@ const BlogPost = ({ post }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:translate-x-full duration-1000 -translate-x-full transition-transform z-0 pointer-events-none" />
         
         {(post.thumbnail || post.Thumbnail) && (
-             <div className="relative w-full h-64 overflow-hidden -mt-6 -mx-6 mb-6 rounded-t-2xl">
+             <div className="relative w-full h-64 overflow-hidden -mt-6 -mx-6 mb-6 rounded-t-2xl bg-gray-100 dark:bg-gray-900">
                  <img 
                     src={post.thumbnail || post.Thumbnail} 
                     alt={post.title} 
