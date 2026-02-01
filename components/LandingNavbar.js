@@ -66,6 +66,7 @@ const LandingNavbar = ({ navItems }) => {
             <Link href="/#ethical-issues" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Ethical Issues</Link>
             <Link href="/#societal-impact" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Societal Impact</Link>
             <Link href="/#digital-citizenship" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Digital Literacy</Link>
+            <Link href="/#resources" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Resources</Link>
             
             {navItems && navItems.map(item => (
               <Link 
@@ -108,6 +109,7 @@ const LandingNavbar = ({ navItems }) => {
               <Link href="/#ethical-issues" className="text-xl font-bold text-gray-800 hover:text-black transition-colors" onClick={() => setMobileMenuOpen(false)}>Ethical Issues</Link>
               <Link href="/#societal-impact" className="text-xl font-bold text-gray-800 hover:text-black transition-colors" onClick={() => setMobileMenuOpen(false)}>Societal Impact</Link>
               <Link href="/#digital-citizenship" className="text-xl font-bold text-gray-800 hover:text-black transition-colors" onClick={() => setMobileMenuOpen(false)}>Digital Literacy</Link>
+              <Link href="/#resources" className="text-xl font-bold text-gray-800 hover:text-black transition-colors" onClick={() => setMobileMenuOpen(false)}>Resources</Link>
 
               {navItems && navItems.map(item => (
                 <Link 

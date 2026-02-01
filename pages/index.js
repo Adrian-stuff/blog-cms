@@ -11,6 +11,7 @@ import CreativitySection from '@/components/CreativitySection'
 import SocietalImpactSection from '@/components/SocietalImpactSection'
 import EquitableFutureSection from '@/components/EquitableFutureSection'
 import DigitalCitizenshipSection from '@/components/DigitalCitizenshipSection'
+import PhishingQuizSection from '@/components/PhishingQuizSection'
 import { getAllPosts } from '@/lib/notion'
 import { useConfig } from '@/lib/config'
 import { FiBook, FiLock, FiGlobe, FiCpu, FiShare2, FiShield, FiAlertTriangle, FiUsers, FiActivity } from 'react-icons/fi'
@@ -93,6 +94,16 @@ export default function Blog ({ navItems, blogPosts }) {
         icon: <FiAlertTriangle />,
         content: (
             <div className="space-y-4">
+               <div className="relative w-full rounded-lg overflow-hidden shadow-md mb-4" style={{ paddingBottom: '56.25%' }}>
+                   <iframe 
+                       className="absolute top-0 left-0 w-full h-full"
+                       src="https://www.youtube.com/embed/_vsAJBtKGtg?si=HL0ZBITWKqVdjk5U" 
+                       title="Cybercrime Video"
+                       frameBorder="0" 
+                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                       allowFullScreen 
+                   ></iframe>
+                </div>
                 <div>
                     <h4 className="font-bold text-gray-900 text-sm mb-1">Types of Cybercrime</h4>
                     <p className="text-sm">Cybercrime includes hacking, identity theft, phishing, cyberstalking, online fraud, and distribution of illegal content. These offenses carry serious legal consequences.</p>
@@ -199,6 +210,8 @@ export default function Blog ({ navItems, blogPosts }) {
               }
             />
         </div>
+
+        <PhishingQuizSection />
 
         <div id="ethical-issues" className="scroll-mt-24">
             <EthicalDilemmasSection />
