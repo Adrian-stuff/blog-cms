@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiShield, FiEye, FiHeart, FiBookOpen, FiLock, FiMessageCircle, FiCheckCircle } from 'react-icons/fi'
+import PollCard from '@/components/PollCard'
 
 const DigitalCitizenshipSection = () => {
     const principles = [
@@ -159,6 +160,9 @@ const DigitalCitizenshipSection = () => {
                 </p>
             </div>
         </div>
+
+        {/* Poll Section */}
+        <PollCard />
     </section>
   )
 }

@@ -41,25 +41,29 @@ export default function Blog ({ navItems, blogPosts }) {
       title: "Legal Issues",
       description: "Understand copyright, intellectual property, cybercrime laws, and your digital rights.",
       slug: "legal-issues",
-      icon: <FiScaleIcon />
+      icon: <FiScaleIcon />,
+      image: "https://www.offthepagecreations.com/wp-content/uploads/2021/08/Gavel-on-keyboard-5323118.jpg"
     },
     {
       title: "Ethical Issues",
       description: "Navigate moral dilemmas in digital communication, privacy, and online behavior.",
       slug: "ethical-issues",
-      icon: <FiHeartIcon />
+      icon: <FiHeartIcon />,
+      image: "https://editor.analyticsvidhya.com/uploads/11565BBVA-OpenMind-Etica-9-Robert-Schultz-etica-e-internet.jpg"
     },
     {
       title: "Societal Impact",
       description: "Explore how media shapes culture, politics, and interpersonal relationships.",
       slug: "societal-impact",
-      icon: <FiUsersIcon />
+      icon: <FiUsersIcon />,
+      image: "https://jgpr.iledu.in/wp-content/uploads/2023/03/V1I12P.jpeg"
     },
     {
       title: "Digital Literacy",
       description: "Develop critical thinking skills to evaluate and create media responsibly.",
       slug: "digital-literacy",
-      icon: <FiBookOpenIcon />
+      icon: <FiBookOpenIcon />,
+      image: "https://news.miami.edu/dcie/_assets/images/images-stories/2016/06/digital-literacy-lg.png"
     }
   ]
   

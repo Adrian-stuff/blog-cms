@@ -55,24 +55,38 @@ const FeatureCard = ({ card, index }) => {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="bg-white p-8 rounded-none border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 relative group overflow-hidden"
+      className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 relative group overflow-hidden h-full flex flex-col"
     >
-      <div className="relative z-10">
-        <div className="flex items-center gap-4 mb-6">
-            <span className="text-4xl font-bold text-gray-200 group-hover:text-gray-300 transition-colors">
-                {index + 1}
-            </span>
-             {card.icon && <span className="text-2xl text-gray-600">{card.icon}</span>}
+      {card.image && (
+        <div className="h-48 w-full overflow-hidden relative">
+            <img 
+                src={card.image} 
+                alt={card.title} 
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+            <div className="absolute bottom-4 left-6 text-white font-bold text-lg drop-shadow-md flex items-center gap-2">
+                 {card.icon && <span className="text-xl text-yellow-400">{card.icon}</span>}
+            </div>
         </div>
+      )}
+
+      <div className="p-8 relative z-10 flex-1 flex flex-col">
+        {!card.image && (
+            <div className="flex items-center gap-4 mb-6">
+                <span className="text-4xl font-bold text-gray-200 group-hover:text-gray-300 transition-colors">
+                    {index + 1}
+                </span>
+                {card.icon && <span className="text-2xl text-gray-600">{card.icon}</span>}
+            </div>
+        )}
         
-        <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-black transition-colors">
+        <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
           {card.title}
         </h3>
-        <p className="text-gray-600 leading-relaxed mb-6">
+        <p className="text-gray-600 leading-relaxed mb-6 flex-1">
           {card.summary || card.description}
         </p>
-        
-
       </div>
     </motion.div>
   )

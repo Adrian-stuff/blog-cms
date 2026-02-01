@@ -46,42 +46,48 @@ const SocietalImpactSection = () => {
             stat: "2.6 billion",
             sub: "People still offline globally",
             title: "Digital Divide",
-            desc: "The gap between those with access to digital technology and those without creates significant inequalities in education, employment, and civic participation."
+            desc: "The gap between those with access to digital technology and those without creates significant inequalities in education, employment, and civic participation.",
+            source: "https://www.itu.int/en/mediacentre/Pages/PR-2024-11-27-facts-and-figures.aspx"
         },
         {
             icon: <FiRadio />,
             stat: "68%",
             sub: "Of adults get news from social media",
             title: "Journalism & Democracy",
-            desc: "The decline of traditional journalism and rise of social media as news sources affects the quality of public discourse and democratic processes."
+            desc: "The decline of traditional journalism and rise of social media as news sources affects the quality of public discourse and democratic processes.",
+            source: "https://www.pewresearch.org/journalism/2018/09/10/news-use-across-social-media-platforms-2018/#:~:text=About%20two%2Dthirds%20of%20American,36%25%20compared%20with%2015%25)."
         },
         {
             icon: <FiUsers />,
             stat: "4.9 billion",
             sub: "Social media users worldwide",
             title: "Social Relationships",
-            desc: "Digital communication transforms how we form and maintain relationships, with both positive connections and concerns about isolation."
+            desc: "Digital communication transforms how we form and maintain relationships, with both positive connections and concerns about isolation.",
+            source: "https://health.ucdavis.edu/blog/cultivating-health/social-medias-impact-our-mental-health-and-tips-to-use-it-safely/2024/05#:~:text=For%20many%20of%20us%2C%20checking,in%20teens%20and%20young%20adults."
         },
         {
             icon: <FiMessageSquare />,
             stat: "56%",
             sub: "Believe social media divides us",
             title: "Public Discourse",
-            desc: "Online platforms shape political debate, sometimes enabling diverse voices while also creating echo chambers and polarization."
+            desc: "Online platforms shape political debate, sometimes enabling diverse voices while also creating echo chambers and polarization.",
+            source: "https://www.ipsos.com/en-us/news-polls/Crossing-Divides"
         },
         {
             icon: <FiLock />,
             stat: "1 billion+",
             sub: "Surveillance cameras globally",
             title: "Surveillance Society",
-            desc: "The expansion of digital surveillance by governments and corporations raises questions about freedom, security, and civil liberties."
+            desc: "The expansion of digital surveillance by governments and corporations raises questions about freedom, security, and civil liberties.",
+            source: "https://geographical.co.uk/science-environment/whos-watching-the-cities-with-the-most-cctv-cameras#:~:text=In%20a%20world%20where%20surveillance,that%20include%20buildings%20and%20transport."
         },
         {
             icon: <FiTrendingUp />,
             stat: "$4.9 trillion",
             sub: "Global e-commerce market",
             title: "Economic Transformation",
-            desc: "The digital economy creates new opportunities while disrupting traditional industries, requiring adaptation in education and workforce development."
+            desc: "The digital economy creates new opportunities while disrupting traditional industries, requiring adaptation in education and workforce development.",
+            source: "https://www.shopify.com/uk/enterprise/blog/global-ecommerce-statistics"
         }
     ]
 
@@ -118,7 +124,20 @@ const SocietalImpactSection = () => {
                     </div>
                     
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{item.desc}</p>
+                    
+                    {item.source && (
+                        <div className="mt-auto pt-4 border-t border-gray-50 text-right">
+                            <a 
+                                href={item.source} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-xs text-blue-500 hover:text-blue-700 font-medium inline-flex items-center gap-1 transition-colors"
+                            >
+                                Source <FiGlobe className="text-[10px]" />
+                            </a>
+                        </div>
+                    )}
                 </motion.div>
             ))}
         </div>

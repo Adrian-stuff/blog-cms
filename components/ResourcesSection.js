@@ -20,27 +20,27 @@ const ResourcesSection = () => {
                 icon={<FiAward />} 
                 title="Educational" 
                 items={[
-                    { title: "Media Literacy Now", tag: "Organization", desc: "Advocating for media literacy education in schools across all states." },
-                    { title: "Common Sense Media", tag: "Website", desc: "Independent reviews, age ratings, and guidance for families on media content." },
-                    { title: "News Literacy Project", tag: "Curriculum", desc: "Resources to help students develop critical thinking skills for news consumption." }
+                    { title: "Media Literacy Now", tag: "Organization", desc: "Advocating for media literacy education in schools across all states.", link: "https://medialiteracynow.org/" },
+                    { title: "Common Sense Media", tag: "Website", desc: "Independent reviews, age ratings, and guidance for families on media content.", link: "https://www.commonsensemedia.org/" },
+                    { title: "News Literacy Project", tag: "Curriculum", desc: "Resources to help students develop critical thinking skills for news consumption.", link: "https://newslit.org/" }
                 ]}
             />
             <ResourceColumn 
                 icon={<FiFileText />} 
                 title="Legal Resources" 
                 items={[
-                    { title: "Electronic Frontier Foundation", tag: "Organization", desc: "Defending civil liberties in the digital world through litigation and advocacy." },
-                    { title: "Creative Commons", tag: "Guide", desc: "Learn about open licensing and how to properly use and share creative works." },
-                    { title: "Privacy Rights Clearinghouse", tag: "Resource", desc: "Information on privacy rights and how to protect personal information." }
+                    { title: "Electronic Frontier Foundation", tag: "Organization", desc: "Defending civil liberties in the digital world through litigation and advocacy.", link: "https://www.eff.org/" },
+                    { title: "Creative Commons", tag: "Guide", desc: "Learn about open licensing and how to properly use and share creative works.", link: "https://creativecommons.org/" },
+                    { title: "Privacy Rights Clearinghouse", tag: "Resource", desc: "Information on privacy rights and how to protect personal information.", link: "https://privacyrights.org/" }
                 ]}
             />
              <ResourceColumn 
                 icon={<FiGlobe />} 
                 title="Fact-Checking" 
                 items={[
-                    { title: "Snopes", tag: "Website", desc: "The internet's definitive fact-checking resource since 1994." },
-                    { title: "FactCheck.org", tag: "Website", desc: "Nonpartisan fact-checking of U.S. political claims." },
-                    { title: "Reuters Fact Check", tag: "News", desc: "Investigates and debunks viral claims and misinformation." }
+                    { title: "Snopes", tag: "Website", desc: "The internet's definitive fact-checking resource since 1994.", link: "https://www.snopes.com/" },
+                    { title: "FactCheck.org", tag: "Website", desc: "Nonpartisan fact-checking of U.S. political claims.", link: "https://www.factcheck.org/" },
+                    { title: "Reuters Fact Check", tag: "News", desc: "Investigates and debunks viral claims and misinformation.", link: "https://www.reuters.com/" }
                 ]}
             />
         </div>
@@ -84,15 +84,38 @@ const ResourceColumn = ({ icon, title, items }) => (
             <h3>{title}</h3>
         </div>
         <div className="space-y-4">
-            {items.map((item, idx) => (
-                <div key={idx} className="bg-white p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all rounded-xl h-full flex flex-col">
-                    <div className="flex justify-between items-start mb-3">
-                        <h4 className="font-bold text-gray-900 text-lg leading-tight">{item.title}</h4>
-                        <span className="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-md shrink-0 ml-2">{item.tag}</span>
+            {items.map((item, idx) => {
+                const CardContent = () => (
+                    <>
+                        <div className="flex justify-between items-start mb-3">
+                            <h4 className="font-bold text-gray-900 text-lg leading-tight">{item.title}</h4>
+                            <span className="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-md shrink-0 ml-2">{item.tag}</span>
+                        </div>
+                        <p className="text-sm text-gray-600 leading-relaxed mt-auto">{item.desc}</p>
+                        {item.link && (
+                             <div className="mt-3 text-xs font-medium text-blue-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                Visit Resource <FiExternalLink />
+                             </div>
+                        )}
+                    </>
+                )
+
+                return item.link ? (
+                    <a 
+                        key={idx} 
+                        href={item.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="bg-white p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all rounded-xl h-full flex flex-col group"
+                    >
+                       <CardContent />
+                    </a>
+                ) : (
+                    <div key={idx} className="bg-white p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all rounded-xl h-full flex flex-col group">
+                        <CardContent />
                     </div>
-                    <p className="text-sm text-gray-600 leading-relaxed mt-auto">{item.desc}</p>
-                </div>
-            ))}
+                )
+            })}
         </div>
     </div>
 )
